@@ -1,6 +1,5 @@
 $(function() {
     var todos = [];
-    var completed = [];
     var toDoId = 1;
     $('#todo-form').submit(function (event) {
         event.preventDefault();
@@ -21,7 +20,7 @@ $(function() {
     var updateToDos = function() {
         showInProgressToDos();
         showCompletedToDos();
-    }
+    };
 
     var showCompletedToDos = function () {
         $('#completed-todos ul').html('')
@@ -31,7 +30,7 @@ $(function() {
                 $('#completed-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
             }
         }
-    }
+    };
     
     var showInProgressToDos = function () {
         $('#in-progress-todos ul').html('')
@@ -41,7 +40,7 @@ $(function() {
                 $('#in-progress-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
             }
         }
-    }
+    };
 
     $('#in-progress-todos ul').on('click', 'li', function() {
         var todoToComplete =  $(this);
@@ -52,5 +51,10 @@ $(function() {
         toDo.isActive = false;
 
         updateToDos();
-    })
+    });
+
+    $('#reset-button').click(function () {
+        todos = [];
+        updateToDos();
+    });
 });
