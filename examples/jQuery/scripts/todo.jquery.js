@@ -8,7 +8,8 @@ $(function() {
         var newToDo = $('#new-todo').val();
         todos.push({
             'id': toDoId,
-            'description': newToDo
+            'description': newToDo,
+            'isActive': true 
         });
         toDoId++;
 
@@ -24,9 +25,11 @@ $(function() {
 
     var showCompletedToDos = function () {
         $('#completed-todos ul').html('')
-        for (var i = 0; i < completed.length; i++) {
-            var currentToDo = completed[i];
-            $('#completed-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+        for (var i = 0; i < todos.length; i++) {
+            var currentToDo = todos[i];
+            if (!currentToDo.isActive) {
+                $('#completed-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+            }
         }
     }
     
@@ -34,16 +37,19 @@ $(function() {
         $('#in-progress-todos ul').html('')
         for (var i = 0; i < todos.length; i++) {
             var currentToDo = todos[i];
-            $('#in-progress-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+            if (currentToDo.isActive) {
+                $('#in-progress-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+            }
         }
     }
 
     $('#in-progress-todos ul').on('click', 'li', function() {
         var todoToComplete =  $(this);
-        completed.push({
-            'id': todoToComplete.data('to-do-id'),
-            'description': todoToComplete.text()
+        var toDo = todos.find(function(todoElement) {
+            return todoElement.id == todoToComplete.data('todo-id');
         });
+
+        toDo.isActive = false;
 
         updateToDos();
     })
