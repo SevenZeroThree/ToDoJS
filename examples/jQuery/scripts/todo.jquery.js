@@ -1,12 +1,17 @@
 $(function() {
     var todos = [];
     var completed = [];
-
+    var toDoId = 1;
     $('#todo-form').submit(function (event) {
         event.preventDefault();
 
         var newToDo = $('#new-todo').val();
-        todos.push(newToDo);
+        todos.push({
+            'id': toDoId,
+            'description': newToDo
+        });
+        toDoId++;
+
         $('#new-todo').val('');
 
         updateToDos();
@@ -21,7 +26,7 @@ $(function() {
         $('#completed-todos ul').html('')
         for (var i = 0; i < completed.length; i++) {
             var currentToDo = completed[i];
-            $('#completed-todos ul').append('<li>' + currentToDo + '</li>');
+            $('#completed-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
         }
     }
     
@@ -29,13 +34,16 @@ $(function() {
         $('#in-progress-todos ul').html('')
         for (var i = 0; i < todos.length; i++) {
             var currentToDo = todos[i];
-            $('#in-progress-todos ul').append('<li>' + currentToDo + '</li>');
+            $('#in-progress-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
         }
     }
 
     $('#in-progress-todos ul').on('click', 'li', function() {
-        var todoToComplete =  $(this).text();
-        completed.push(todoToComplete);
+        var todoToComplete =  $(this);
+        completed.push({
+            'id': todoToComplete.data('to-do-id'),
+            'description': todoToComplete.text()
+        });
 
         updateToDos();
     })
