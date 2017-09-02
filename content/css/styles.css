@@ -2,3 +2,11 @@ body {
     font: 16px 'Helvetica Neue', Helvetica, Arial;
     background: #fafafa;
 }
+
+ul.todo-list {
+    list-style-type: none;
+}
+
+#completed-todos li {
+    text-decoration: line-through;
+}
