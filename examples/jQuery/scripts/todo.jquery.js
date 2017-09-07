@@ -27,7 +27,7 @@ $(function() {
         for (var i = 0; i < todos.length; i++) {
             var currentToDo = todos[i];
             if (!currentToDo.isActive) {
-                $('#completed-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+                $('#completed-todos ul').append('<li class="list-group-item" data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
             }
         }
     };
@@ -37,7 +37,7 @@ $(function() {
         for (var i = 0; i < todos.length; i++) {
             var currentToDo = todos[i];
             if (currentToDo.isActive) {
-                $('#in-progress-todos ul').append('<li data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
+                $('#in-progress-todos ul').append('<li class="list-group-item" data-todo-id="' + currentToDo.id + '">' + currentToDo.description + '</li>');
             }
         }
     };

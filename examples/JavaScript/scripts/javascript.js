@@ -24,6 +24,7 @@ var showCompletedToDos = function () {
             var toDoContent = document.createTextNode(currentToDo.description);
             listElement.appendChild(toDoContent);
             listElement.setAttribute('data-todo-id', currentToDo.id);
+            listElement.setAttribute('class', 'list-group-item');
             completedTodosList.appendChild(listElement);
         }
     }
@@ -40,6 +41,7 @@ var showInProgressToDos = function () {
             var toDoContent = document.createTextNode(currentToDo.description);
             listElement.appendChild(toDoContent);
             listElement.setAttribute('data-todo-id', currentToDo.id);
+            listElement.setAttribute('class', 'list-group-item');
             inProgressToDoList.appendChild(listElement);
             listElement.addEventListener('click', markToDoAsCompleted);
         }
