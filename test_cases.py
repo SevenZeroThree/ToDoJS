@@ -15,19 +15,15 @@ class ToDoJSTest(unittest.TestCase):
         """Test cases for jQuery implementation."""
         driver = self.driver
 
-        jquery_element = driver.find_element_by_xpath("/html/body/section/section[1]/h3/a")
-        self.assertEqual("jQuery", jquery_element.text)
+        jquery_element = driver.find_element_by_link_text("jQuery")
         jquery_element.click()
-        h1_element = driver.find_elements_by_tag_name("h1")[0]
-        self.assertEqual("ToDo by jQuery", h1_element.text)
         self.__todos_test()
 
     def test_javascript_todo(self):
         """Test cases for JavaScript implementation."""
         driver = self.driver
 
-        javascript_element = driver.find_element_by_xpath("/html/body/section/section[2]/h3/a")
-        self.assertEqual("JavaScript", javascript_element.text)
+        javascript_element = driver.find_element_by_link_text("JavaScript")
         javascript_element.click()
         self.__todos_test()
 
