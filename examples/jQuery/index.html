@@ -5,34 +5,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />
-        <link rel="stylesheet" href="./content/css/styles.css" />
+        <link rel="stylesheet" href="../../content/css/styles.css" />
     </head>
     <body>
-        <div class="container">
-            <a href="../../">Back</a>
-            <h1>ToDo by jQuery</h1>
-            <h2>What Needs Doing?</h2>
-    
-            <form id="todo-form">
-                <input id="new-todo" type="text" placeholder="New ToDo" />
-                <input id="add-todo" type="submit" value="Add" />
-            </form>
-    
-            <section id="in-progress-todos">
-                <h3>My ToDos</h3>
-                <ul class="todo-list">
-                        
-                </ul>
-            </section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <nav class="nav flex-md-column justify-content-center">
+                        <a class="nav-link disabled" href="../jQuery">jQuery</a>
+                        <a class="nav-link" href="../JavaScript">JavaScript</a>
+                    </nav>
+                </div>
+                <div class="col-md-10">  
+                    <h1>ToDo via jQuery</h1>
             
-            <section id="completed-todos">
-                <h3>Done</h3>
-                <ul class="todo-list">
-
-                </ul>
-            </section>
-    
-            <button id="reset-button">Reset</button>
+                    <form id="todo-form">
+                        <div class="form-group">
+                            <label for="new-todo">What needs doing?</label>
+                            <input id="new-todo" class="form-control" type="text" placeholder="New ToDo" />
+                        </div>
+                        <input id="add-todo" class="btn btn-primary" type="submit" value="Add" />
+                    </form>
+            
+                    <section id="in-progress-todos">
+                        <h3>My ToDos</h3>
+                        <ul class="todo-list">
+                                
+                        </ul>
+                    </section>
+                    
+                    <section id="completed-todos">
+                        <h3>Done</h3>
+                        <ul class="todo-list">
+        
+                        </ul>
+                    </section>
+            
+                    <button id="reset-button">Reset</button>
+                </div>
+            </div>
         </div>
 
         <script src="./scripts/jquery.js"></script>
